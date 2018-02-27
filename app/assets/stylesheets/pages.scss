@@ -1,0 +1,146 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: white;
+  color: #444;
+  height: 100vh;
+  margin: 0;
+}
+
+header {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-image: url("https://pbs.twimg.com/profile_images/3119918395/70ddd98d7a7d575f1b5414639cdf1941_400x400.png");
+  background-repeat: no-repeat;
+  background-position-x: right -35px;
+  background-position-y: top;
+  border-bottom: 3px solid #444;
+  height: 100px;
+
+  h2 {
+    color: white;
+  }
+}
+
+aside {
+  border-left: 3px solid #444;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  display: flex;
+  padding: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  .total-reading-time {
+    font-weight: bold;
+    &.hidden {
+      display: none;
+    }
+  }
+
+  nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+
+    .short-article {
+      display: grid;
+      grid-template-columns: 8fr 2fr 25px;
+      margin: 5px;
+      width: 100%;
+      padding: 5px;
+      background-image: linear-gradient(to bottom,rgba(12,242,143,.2),rgba(12,242,143,.2));
+      color: #444;
+
+      a {
+        text-decoration: none;
+        color: #444;
+
+        &:visited {
+          color: #444;
+        }
+
+        &.remove {
+          font-weight: bold;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      &:hover {
+        background-image: linear-gradient(to bottom,rgba(12,235,160,.9),rgba(12,235,160,.9));
+      }
+
+      p {
+        margin: 0;
+      }
+
+      * {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+nav {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+
+  .article {
+    width: 500px;
+    padding: 15px;
+    margin: 15px;
+    border: 4px solid rgba(12,235,160,0);
+
+    &.selected, &.selected:hover {
+      border-color: rgba(12,235,160,.9);
+      position: relative;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+
+      &:after {
+        content: '\2713';
+        font-size: 13px;
+        line-height: 13px;
+        font-weight: bold;
+        color: white;
+      }
+
+      &:before {
+        border-radius: 0;
+        border-width: 16px;
+        border-right-color: rgba(12,242,143,.9);
+        border-top-color: rgba(12,242,143,.9);
+      }
+    }
+
+    &:hover {
+      border-color: rgba(12,242,143,.2);
+    }
+  }
+}
+
